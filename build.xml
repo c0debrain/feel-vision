@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="feel-vision" default="devserver" basedir=".">
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	
+	<target name="deploy">
+		<echo message="Compiling..."/>
+		<exec executable="mvn" failonerror="true">
+			<arg value="clean" />
+			<arg value="package" />
+			<arg value="-e" />
+		</exec>
+		<echo message="Updating App Engine..."/>
+		<exec executable="mvn" failonerror="true">
+			<arg value="-Dgwt.compiler.skip=true"/>
+			<arg value="appengine:update" />
+			<arg value="-e" />
+			<arg value="-P"/>
+			<arg value="gae"/>
+		</exec>
+		<echo message="Done!!!"/>
+
+		<!-- to enable the say command on Linux, the user must install the package gnustep-gui-runtime -->
+		<exec executable="say" failonerror="false">
+			<arg value="Feel Vision deployed and running"/>
+		</exec>
+	</target>
+
+	<target name="buildserver">
+		<echo message="Building devserver with no GWT compilation..."/>
+		<exec executable="mvn" failonerror="true">
+			<arg value="-Dgwt.compiler.skip=true"/>
+			<arg value="-e"/>
+			<arg value="package"/>
+		</exec>
+	</target>
+	
+	<target name="devserver">
+		<echo message="Starting devserver..."/>
+		<exec executable="mvn" failonerror="true">
+			<arg value="-Dgwt.compiler.skip=true"/>
+			<arg value="appengine:devserver"/>
+			<arg value="-e"/>
+			<arg value="-P"/>
+			<arg value="gae"/>
+		</exec>
+	</target>
+	
+</project>

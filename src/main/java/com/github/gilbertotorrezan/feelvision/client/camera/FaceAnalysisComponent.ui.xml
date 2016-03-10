@@ -1,0 +1,130 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.addins="urn:import:gwt.material.design.addins.client.ui">
+	
+	<ui:style gss="true">
+		.imageContainer {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.infoContainer {
+			position: relative;
+		}
+		
+		.infoButton {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			color: grey;
+		}
+		
+		@media only screen and (min-width: 601px) {
+			.imageContainer {
+				height: 400px;
+			}
+			.infoContainer {
+				height: 400px;
+				padding-left: 20px !important;
+			}
+		}
+		
+		@media only screen and (max-width: 600px) {
+			.imageContainer {
+				padding: 20px;
+			}
+			.infoContainer {
+				padding-left: 20px !important;
+				padding-right: 20px !important;
+			}
+		}
+	</ui:style>
+	
+	<m:MaterialPanel marginTop="20" backgroundColor="white" addStyleNames="z-depth-1">
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s12 m4 l3">
+				<m:MaterialPanel addStyleNames="{style.imageContainer}">
+					<m:MaterialImage ui:field="faceImage" addStyleNames="z-depth-1" />
+				</m:MaterialPanel>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s12 m8 l9" addStyleNames="{style.infoContainer}">
+				<m:MaterialIcon ui:field="info" iconType="INFO" waves="LIGHT" title="Info about the metrics" addStyleNames="{style.infoButton}" />
+				<m:MaterialPanel paddingTop="20">
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Detection confidence:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="accuracy" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+				</m:MaterialPanel>
+				<m:MaterialPanel paddingTop="20">
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Joy:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="joyLikelihood" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Sorrow:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="sorrowLikelihood" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Anger:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="angerLikelihood" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Surprise:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="surpriseLikelihood" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+				</m:MaterialPanel>
+				
+				<m:MaterialPanel paddingTop="20">
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Under exposed:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="underExposedLikelihood" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Blurred:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="blurredLikelihood" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Headwear:" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel ui:field="headwearLikelihood" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+				</m:MaterialPanel>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+	
+	</m:MaterialPanel>
+</ui:UiBinder> 

@@ -1,0 +1,73 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.addins="urn:import:gwt.material.design.addins.client.ui">
+	
+	<ui:style gss="true">
+		body {
+			background-color: #f2f2f2;
+		}
+	
+		.center {
+			height: calc(100% - 64px);
+			overflow-y: auto;
+		}
+		
+		.brand {
+			font-size: 1.6rem !important;
+		}
+		
+		.navBar {
+			transition: background-color 0.5s, color 0.5s;
+		}
+		.navBar a {
+			visibility: visible !important;
+		}
+		
+		@external active;
+		.sideNav > li.active > a > * {
+			color: #2E7D32 !important;
+		}
+		
+		@media only screen and (min-width: 601px) {
+			.center {
+				padding-left: 240px;
+			}
+		}
+		
+		@media only screen and (min-width: 601px) and (max-width: 992px) {
+			.sideNav {
+				margin-top: 20px !important;
+			}
+		}
+		
+		@media only screen and (max-width: 992px) {
+			.brand {
+				left: 0 !important;
+				transform: none !important;
+				padding-left: 70px !important;
+				width: 100% !important;
+			}
+		}
+		
+		.page {
+			height: 100%;
+		}
+	</ui:style>
+	
+	<g:HTMLPanel styleName="{style.page}">
+		<m:MaterialNavBar ui:field="navBar" backgroundColor="green darken-3" activates="sideBar" addStyleNames="{style.navBar}">
+			<m:MaterialNavBrand ui:field="brand" text="Feel Vision" addStyleNames="{style.brand}" />
+		</m:MaterialNavBar>
+		
+		<m:MaterialSideNav ui:field="sideBar" m:id="sideBar" type="CARD" closeOnClick="false" addStyleNames="{style.sideNav}">
+			<m:MaterialNavBrand ui:field="titleLink" href="#camera" hideOn="HIDE_ON_MED_UP" waves="DEFAULT" addStyleNames="{style.brand}">Feel Vision</m:MaterialNavBrand>
+			<m:MaterialLink ui:field="cameraLink" text="Camera" iconType="PHOTO_CAMERA" targetHistoryToken="camera" waves="DEFAULT" />
+			<m:MaterialLink ui:field="aboutLink" text="About" iconType="INFO_OUTLINE" targetHistoryToken="about" waves="DEFAULT" />
+		</m:MaterialSideNav>
+		
+		<m:MaterialContainer ui:field="center" addStyleNames="{style.center}" />
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

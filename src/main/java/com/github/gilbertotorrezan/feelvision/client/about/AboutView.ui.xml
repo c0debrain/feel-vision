@@ -1,0 +1,133 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.addins="urn:import:gwt.material.design.addins.client.ui">
+	
+	<ui:style gss="true">
+		.view {
+			padding-bottom: 50px;
+		}
+		.section {
+			padding: 20px 20px 0 20px;
+			background-color: white;
+		}
+		.imageSection {
+			background-color: white;
+		}
+		.section > *, .imageSection > * {
+			display: inline-block;
+	 	}
+	 	
+	 	.imageTitle {
+			font-size: 24px;
+			font-weight: 300;
+		}
+	 	 
+	 	.descLabel {
+			color: grey;
+			font-size: 13px;
+			padding-left: 40px;
+		}
+		@media only screen and (max-width: 600px) {
+			.imageWrapper {
+				width: 100%;
+				text-align: center;
+			}
+			.view {
+				padding-bottom: 150px;
+			}
+		}
+	</ui:style>
+	
+	<m:MaterialPanel addStyleNames="{style.view} container">
+		<m:MaterialTitle ui:field="projectTitle" title="Project" scrollspy="project" />
+		<m:MaterialPanel addStyleNames="{style.section} z-depth-1">
+			<m:MaterialRow>
+				<m:MaterialColumn grid="s12">
+					<g:HTMLPanel><p>Feel Vision is a project intended for testing the Google Cloud Vision API and the interaction between it and other server and client-side technologies. The photos are not stored on the server - they are transmitted to the Cloud Vision API servers and that's all.</p><p>Please note that for the camera to work, your browser needs to support it.</p></g:HTMLPanel>
+					<m:MaterialLink text="Project on GitHub" href="https://github.com/gilberto-torrezan/feel-vision" target="_blank" iconType="LINK" textColor="green darken-3" />
+					<m:MaterialLabel text="Fork it! =)" addStyleNames="{style.descLabel}" />
+				</m:MaterialColumn>
+			</m:MaterialRow>
+		</m:MaterialPanel>
+		
+		<m:MaterialTitle title="Developer" scrollspy="developer" />
+		<m:MaterialPanel addStyleNames="{style.imageSection} z-depth-1">
+			<m:MaterialPanel padding="20" addStyleNames="{style.imageWrapper}">
+				<m:MaterialImage ui:field="developerImage" circle="true" addStyleNames="z-depth-1" />
+			</m:MaterialPanel>
+			<m:MaterialPanel padding="20">
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLabel text="Gilberto Torrezan Filho" addStyleNames="{style.imageTitle}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="Linkedin profile" href="https://www.linkedin.com/in/gilberto-torrezan-filho-4a7b70a2" target="_blank" iconType="LINK" textColor="green darken-3" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="Stack Overflow profile" href="http://stackoverflow.com/users/1013327/gilberto-torrezan" target="_blank" iconType="LINK" textColor="green darken-3" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="GitHub profile" href="https://github.com/gilberto-torrezan" target="_blank" iconType="LINK" textColor="green darken-3" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+			</m:MaterialPanel>
+		</m:MaterialPanel>
+		
+		<m:MaterialTitle title="Server-side technologies" scrollspy="server" />
+		<m:MaterialPanel addStyleNames="{style.section} z-depth-1">
+			<m:MaterialPanel>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="Google App Engine" href="https://cloud.google.com/appengine/" target="_blank" iconType="LINK" textColor="green darken-3" />
+						<m:MaterialLabel text="Google App Engine is a platform for building scalable web applications and mobile backends." addStyleNames="{style.descLabel}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="Google Cloud Vision API" href="https://cloud.google.com/vision/" target="_blank" iconType="LINK" textColor="green darken-3" />
+						<m:MaterialLabel text="Google Cloud Vision API enables developers to understand the content of an image by encapsulating powerful machine learning models in an easy to use REST API." addStyleNames="{style.descLabel}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="Jersey API" href="https://jersey.java.net/" target="_blank" iconType="LINK" textColor="green darken-3" />
+						<m:MaterialLabel text="RESTful Web Services in Java." addStyleNames="{style.descLabel}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+			</m:MaterialPanel>
+		</m:MaterialPanel>
+		
+		<m:MaterialTitle title="Client-side technologies" scrollspy="client" />
+		<m:MaterialPanel addStyleNames="{style.section} z-depth-1">
+			<m:MaterialPanel>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="GWT" href="http://www.gwtproject.org/" target="_blank" iconType="LINK" textColor="green darken-3" />
+						<m:MaterialLabel text="GWT is a development toolkit for building and optimizing complex browser-based applications." addStyleNames="{style.descLabel}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="GWT Material Design" href="https://github.com/GwtMaterialDesign/gwt-material" target="_blank" iconType="LINK" textColor="green darken-3" />
+						<m:MaterialLabel text="A Google Material Design wrapper for GWT." addStyleNames="{style.descLabel}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialLink text="GWT Views API" href="https://github.com/gilberto-torrezan/gwt-views" target="_blank" iconType="LINK" textColor="green darken-3" />
+						<m:MaterialLabel text="A simple but powerful View controller for GWT." addStyleNames="{style.descLabel}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+			</m:MaterialPanel>
+		</m:MaterialPanel>		
+		
+	</m:MaterialPanel>
+</ui:UiBinder> 
