@@ -1,5 +1,6 @@
 package com.github.gilbertotorrezan.feelvision.client.camera;
 
+import gwt.material.design.addins.client.rating.MaterialRating;
 import gwt.material.design.client.constants.ButtonType;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialImage;
@@ -41,19 +42,19 @@ public class FaceAnalysisComponent extends Composite {
 
 	@UiField MaterialImage faceImage;
 	@UiField MaterialLabel accuracy;
-	@UiField MaterialLabel joyLikelihood;
-	@UiField MaterialLabel sorrowLikelihood;
-	@UiField MaterialLabel angerLikelihood;
-	@UiField MaterialLabel surpriseLikelihood;
-	@UiField MaterialLabel underExposedLikelihood;
-	@UiField MaterialLabel blurredLikelihood;
-	@UiField MaterialLabel headwearLikelihood;
+	@UiField MaterialRating joyLikelihood;
+	@UiField MaterialRating sorrowLikelihood;
+	@UiField MaterialRating angerLikelihood;
+	@UiField MaterialRating surpriseLikelihood;
+	@UiField MaterialRating underExposedLikelihood;
+	@UiField MaterialRating blurredLikelihood;
+	@UiField MaterialRating headwearLikelihood;
 	
 	public FaceAnalysisComponent() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
-	public void setFace(MaterialImage originalImage, FaceAnalysis face){
+	public void setFace(MaterialImage originalImage, final FaceAnalysis face){
 		if (!face.getBoundingPoly().isEmpty()){
 			ImageElement el = originalImage.getElement().cast();
 			int minX = el.getClientWidth();
@@ -88,25 +89,65 @@ public class FaceAnalysisComponent extends Composite {
 		}
 		
 		accuracy.setText(NumberFormat.getDecimalFormat().format(face.getDetectionConfidence() * 100) + "%");
-		joyLikelihood.setText(getLikelihoodText(face.getJoyLikelihood()));
-		sorrowLikelihood.setText(getLikelihoodText(face.getSorrowLikelihood()));
-		angerLikelihood.setText(getLikelihoodText(face.getAngerLikelihood()));
-		surpriseLikelihood.setText(getLikelihoodText(face.getSurpriseLikelihood()));
-		underExposedLikelihood.setText(getLikelihoodText(face.getUnderExposedLikelihood()));
-		blurredLikelihood.setText(getLikelihoodText(face.getBlurredLikelihood()));
-		headwearLikelihood.setText(getLikelihoodText(face.getHeadwearLikelihood()));
+		
+		joyLikelihood.setValue(getLikelihoodRating(face.getJoyLikelihood()));
+		joyLikelihood.setTooltip(joyLikelihood.getTooltip() + " " + getLikelihoodText(face.getJoyLikelihood()));
+		
+		sorrowLikelihood.setValue(getLikelihoodRating(face.getSorrowLikelihood()));
+		sorrowLikelihood.setTooltip(sorrowLikelihood.getTooltip() + " " + getLikelihoodText(face.getSorrowLikelihood()));
+		
+		angerLikelihood.setValue(getLikelihoodRating(face.getAngerLikelihood()));
+		angerLikelihood.setTooltip(angerLikelihood.getTooltip() + " " + getLikelihoodText(face.getAngerLikelihood()));
+		
+		surpriseLikelihood.setValue(getLikelihoodRating(face.getSurpriseLikelihood()));
+		surpriseLikelihood.setTooltip(surpriseLikelihood.getTooltip() + " " + getLikelihoodText(face.getSurpriseLikelihood()));
+		
+		underExposedLikelihood.setValue(getLikelihoodRating(face.getUnderExposedLikelihood()));
+		underExposedLikelihood.setTooltip(underExposedLikelihood.getTooltip() + " " + getLikelihoodText(face.getUnderExposedLikelihood()));
+		
+		blurredLikelihood.setValue(getLikelihoodRating(face.getBlurredLikelihood()));
+		blurredLikelihood.setTooltip(blurredLikelihood.getTooltip() + " " + getLikelihoodText(face.getBlurredLikelihood()));
+		
+		headwearLikelihood.setValue(getLikelihoodRating(face.getHeadwearLikelihood()));
+		headwearLikelihood.setTooltip(headwearLikelihood.getTooltip() + " " + getLikelihoodText(face.getHeadwearLikelihood()));
+	}
+
+	private int getLikelihoodRating(Likelihood likelihood){
+		switch (likelihood) {
+		case UNKNOWN:
+		default: return 0;
+		
+		case VERY_UNLIKELY: return 1;
+		case UNLIKELY: return 2;
+		case POSSIBLE: return 3;
+		case LIKELY: return 4;
+		case VERY_LIKELY: return 5;
+		}
+	}
+	
+	private String getLikelihoodColor(Likelihood likelihood){
+		switch (likelihood) {
+		case UNKNOWN:
+		default: return "grey";
+		
+		case VERY_UNLIKELY: return "red";
+		case UNLIKELY: return "orange";
+		case POSSIBLE: return "purple";
+		case LIKELY: return "blue";
+		case VERY_LIKELY: return "green";
+		}
 	}
 	
 	private String getLikelihoodText(Likelihood likelihood){
 		switch (likelihood) {
 		case UNKNOWN:
-		default: return "<span class=\"grey-text\">Unknown</span>";
+		default: return "Unknown";
 		
-		case VERY_UNLIKELY: return "<span class=\"red-text\">Very unlikely</span>";
-		case UNLIKELY: return "<span class=\"orange-text\">Unlikely</span>";
-		case POSSIBLE: return "<span class=\"purple-text\">Possible</span>";
-		case LIKELY: return "<span class=\"blue-text\">Likely</span>";
-		case VERY_LIKELY: return "<span class=\"green-text\">Very likely</span>";
+		case VERY_UNLIKELY: return "Very unlikely";
+		case UNLIKELY: return "Unlikely";
+		case POSSIBLE: return "Possible";
+		case LIKELY: return "Likely";
+		case VERY_LIKELY: return "Very likely";
 		}
 	}
 	
@@ -124,21 +165,27 @@ public class FaceAnalysisComponent extends Composite {
 		content.add(list);
 		
 		lbl = new MaterialLabel(getLikelihoodText(Likelihood.UNKNOWN));
+		lbl.setTextColor(getLikelihoodColor(Likelihood.UNKNOWN));
 		lbl.setPaddingTop(10);
 		list.add(lbl);
 		lbl = new MaterialLabel(getLikelihoodText(Likelihood.VERY_UNLIKELY));
+		lbl.setTextColor(getLikelihoodColor(Likelihood.VERY_UNLIKELY));
 		lbl.setPaddingTop(10);
 		list.add(lbl);
 		lbl = new MaterialLabel(getLikelihoodText(Likelihood.UNLIKELY));
+		lbl.setTextColor(getLikelihoodColor(Likelihood.UNLIKELY));
 		lbl.setPaddingTop(10);
 		list.add(lbl);
 		lbl = new MaterialLabel(getLikelihoodText(Likelihood.POSSIBLE));
+		lbl.setTextColor(getLikelihoodColor(Likelihood.POSSIBLE));
 		lbl.setPaddingTop(10);
 		list.add(lbl);
 		lbl = new MaterialLabel(getLikelihoodText(Likelihood.LIKELY));
+		lbl.setTextColor(getLikelihoodColor(Likelihood.LIKELY));
 		lbl.setPaddingTop(10);
 		list.add(lbl);
 		lbl = new MaterialLabel(getLikelihoodText(Likelihood.VERY_LIKELY));
+		lbl.setTextColor(getLikelihoodColor(Likelihood.VERY_LIKELY));
 		lbl.setPaddingTop(10);
 		list.add(lbl);
 		

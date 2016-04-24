@@ -22,12 +22,17 @@
 			color: grey;
 		}
 		
+		@external material-rating;
+		.material-rating > i {
+			font-size: 20px;
+		}
+		
 		@media only screen and (min-width: 601px) {
 			.imageContainer {
-				height: 400px;
+				height: 430px;
 			}
 			.infoContainer {
-				height: 400px;
+				height: 430px;
 				padding-left: 20px !important;
 			}
 		}
@@ -68,7 +73,7 @@
 							<m:MaterialLabel text="Joy:" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
-							<m:MaterialLabel ui:field="joyLikelihood" />
+							<ma:rating.MaterialRating ui:field="joyLikelihood" editable="false" selectedRatingIcon="LENS" unselectedRatingIcon="RADIO_BUTTON_UNCHECKED" tooltip="Joy:" textColor="green darken-3" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
 					<m:MaterialRow>
@@ -76,7 +81,7 @@
 							<m:MaterialLabel text="Sorrow:" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
-							<m:MaterialLabel ui:field="sorrowLikelihood" />
+							<ma:rating.MaterialRating ui:field="sorrowLikelihood" editable="false" selectedRatingIcon="LENS" unselectedRatingIcon="RADIO_BUTTON_UNCHECKED" tooltip="Sorrow:" textColor="green darken-3" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
 					<m:MaterialRow>
@@ -84,7 +89,7 @@
 							<m:MaterialLabel text="Anger:" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
-							<m:MaterialLabel ui:field="angerLikelihood" />
+							<ma:rating.MaterialRating ui:field="angerLikelihood" editable="false" selectedRatingIcon="LENS" unselectedRatingIcon="RADIO_BUTTON_UNCHECKED" tooltip="Anger:" textColor="green darken-3" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
 					<m:MaterialRow>
@@ -92,7 +97,7 @@
 							<m:MaterialLabel text="Surprise:" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
-							<m:MaterialLabel ui:field="surpriseLikelihood" />
+							<ma:rating.MaterialRating ui:field="surpriseLikelihood" editable="false" selectedRatingIcon="LENS" unselectedRatingIcon="RADIO_BUTTON_UNCHECKED" tooltip="Surprise:" textColor="green darken-3" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
 				</m:MaterialPanel>
@@ -103,7 +108,7 @@
 							<m:MaterialLabel text="Under exposed:" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
-							<m:MaterialLabel ui:field="underExposedLikelihood" />
+							<ma:rating.MaterialRating ui:field="underExposedLikelihood" editable="false" selectedRatingIcon="LENS" unselectedRatingIcon="RADIO_BUTTON_UNCHECKED" tooltip="Under exposed:" textColor="green darken-3" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
 					<m:MaterialRow>
@@ -111,7 +116,7 @@
 							<m:MaterialLabel text="Blurred:" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
-							<m:MaterialLabel ui:field="blurredLikelihood" />
+							<ma:rating.MaterialRating ui:field="blurredLikelihood" editable="false" selectedRatingIcon="LENS" unselectedRatingIcon="RADIO_BUTTON_UNCHECKED" tooltip="Blurred:" textColor="green darken-3" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
 					<m:MaterialRow>
@@ -119,7 +124,7 @@
 							<m:MaterialLabel text="Headwear:" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
-							<m:MaterialLabel ui:field="headwearLikelihood" />
+							<ma:rating.MaterialRating ui:field="headwearLikelihood" editable="false" selectedRatingIcon="LENS" unselectedRatingIcon="RADIO_BUTTON_UNCHECKED" tooltip="Headwear:" textColor="green darken-3" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
 				</m:MaterialPanel>

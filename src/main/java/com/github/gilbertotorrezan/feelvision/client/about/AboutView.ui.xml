@@ -61,6 +61,7 @@
 				<m:MaterialRow>
 					<m:MaterialColumn grid="s12">
 						<m:MaterialLabel text="Gilberto Torrezan Filho" addStyleNames="{style.imageTitle}" />
+						<m:MaterialLabel text="Passionate developer, expert Java architect, GWT and cloud enthusiast" />
 					</m:MaterialColumn>
 				</m:MaterialRow>
 				<m:MaterialRow>

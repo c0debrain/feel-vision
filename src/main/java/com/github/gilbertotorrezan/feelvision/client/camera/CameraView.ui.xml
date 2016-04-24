@@ -23,7 +23,7 @@
 	<m:MaterialPanel addStyleNames="{style.view} container">
 		<m:MaterialTitle ui:field="viewTitle" title="Take a picture" description="We will try to detect your feelings..." textAlign="CENTER" />
 		<m:MaterialPanel paddingTop="20" textAlign="CENTER">
-			<ma:cameracapture.MaterialCameraCapture ui:field="video" addStyleNames="{style.video} z-depth-1" />
+			<ma:camera.MaterialCameraCapture ui:field="video" addStyleNames="{style.video} z-depth-1" />
 			<m:MaterialImage ui:field="image" addStyleNames="z-depth-1" />
 		</m:MaterialPanel>
 		<m:MaterialPanel ui:field="results">
