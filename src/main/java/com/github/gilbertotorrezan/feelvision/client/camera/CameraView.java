@@ -1,9 +1,9 @@
 package com.github.gilbertotorrezan.feelvision.client.camera;
 
-import gwt.material.design.addins.client.events.CameraCaptureEvent;
-import gwt.material.design.addins.client.events.CameraCaptureEvent.CaptureStatus;
-import gwt.material.design.addins.client.events.CameraCaptureHandler;
-import gwt.material.design.addins.client.ui.MaterialCameraCapture;
+import gwt.material.design.addins.client.camera.MaterialCameraCapture;
+import gwt.material.design.addins.client.camera.events.CameraCaptureEvent;
+import gwt.material.design.addins.client.camera.events.CameraCaptureEvent.CaptureStatus;
+import gwt.material.design.addins.client.camera.events.CameraCaptureHandler;
 import gwt.material.design.client.constants.Display;
 import gwt.material.design.client.constants.TextAlign;
 import gwt.material.design.client.ui.MaterialButton;
